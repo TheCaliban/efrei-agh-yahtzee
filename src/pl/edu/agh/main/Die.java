@@ -24,4 +24,5 @@ public class Die
     {
         return this.value;
     }
+
 }
