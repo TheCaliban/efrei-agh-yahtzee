@@ -1,5 +1,9 @@
 package pl.edu.agh.main;
 
+import pl.edu.agh.scoreboard.Scoreboard;
+
+import java.io.EOFException;
+import java.io.IOException;
 import java.util.Scanner;
 
 public class Main {
@@ -11,12 +15,41 @@ public class Main {
 
     public static void main(String[] args)
     {
-        new Main();
-        Die d = new Die();
-        System.out.println(d.rollTheDie());
-        System.out.println(d.rollTheDie());
-        System.out.println(d.rollTheDie());
-        System.out.println(d.rollTheDie());
+//        new Main();
+//        Die d = new Die();
+//        System.out.println(d.rollTheDie());
+//        System.out.println(d.rollTheDie());
+//        System.out.println(d.rollTheDie());
+//        System.out.println(d.rollTheDie());
+
+        Player p1 = new Player("Jean");
+        Player p2 = new Player("John");
+
+        p1.getScoreboard().setOnes(6);
+        p1.getScoreboard().setFives(10);
+
+        p2.getScoreboard().setYahtzee();
+
+        
+        System.out.println(p1.getScoresTab());
+        System.out.println(p2.getScoresTab());
+
+
+        /* This is to test if serialization works ... do not mind it */
+
+        try {
+            p1.storeHistory();
+
+            p1.setScoresTab(null);
+
+            System.out.println(p1.getScoresTab());
+
+            System.out.println(p1.readHistory());
+
+        } catch (IOException | ClassNotFoundException e) {
+//            e.printStackTrace();
+            System.out.println("Try serialization error");
+        }
     }
 
     private void menu()

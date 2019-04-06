@@ -1,8 +1,9 @@
 package pl.edu.agh.scoreboard;
 
+import java.io.Serializable;
 import java.util.HashMap;
 
-public class Scoreboard {
+public class Scoreboard implements Serializable {
 
     private HashMap<Scores, Integer> scores;
 
@@ -14,8 +15,8 @@ public class Scoreboard {
         this.scores.put(Scores.FOURS, -1);
         this.scores.put(Scores.FIVES, -1);
         this.scores.put(Scores.SIXES, -1);
-        this.scores.put(Scores.TOTAL, -1);
-        this.scores.put(Scores.BONUS, -1);
+        this.scores.put(Scores.TOTAL, 0);
+        this.scores.put(Scores.BONUS, 0);
         this.scores.put(Scores.THREE_OA_KIND, -1);
         this.scores.put(Scores.FOUR_OA_KIND, -1);
         this.scores.put(Scores.FULL_HOUSE, -1);
@@ -23,7 +24,7 @@ public class Scoreboard {
         this.scores.put(Scores.LARGE_STRAIGHT, -1);
         this.scores.put(Scores.CHANCE, -1);
         this.scores.put(Scores.YAHTZEE, -1);
-        this.scores.put(Scores.SCORE, -1);
+        this.scores.put(Scores.SCORE, 0);
     }
 
     private void setThisAdvanced(Scores key, int value){
@@ -96,5 +97,21 @@ public class Scoreboard {
     public int getScore(){
         return scores.get(Scores.SCORE);
     }
-    
+
+    public HashMap<Scores, Integer> getScoresTab()
+    {
+        return this.scores;
+    }
+
+    public void setScoresTab(HashMap scores)
+    {
+        this.scores = scores;
+    }
+
+    @Override
+    public String toString() {
+        return "Scoreboard{" +
+                "scores=" + scores +
+                '}';
+    }
 }

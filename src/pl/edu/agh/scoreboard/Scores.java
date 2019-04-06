@@ -16,5 +16,5 @@ public enum Scores {
     LARGE_STRAIGHT,
     CHANCE,
     YAHTZEE,
-    SCORE;
+    SCORE
 }
