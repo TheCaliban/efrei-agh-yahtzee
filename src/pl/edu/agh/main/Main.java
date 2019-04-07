@@ -1,8 +1,8 @@
 package pl.edu.agh.main;
 
-import pl.edu.agh.scoreboard.Scoreboard;
+import pl.edu.agh.gameSide.Game;
+import pl.edu.agh.playerSide.Player;
 
-import java.io.EOFException;
 import java.io.IOException;
 import java.util.Scanner;
 
@@ -30,10 +30,11 @@ public class Main {
 
         p2.getScoreboard().setYahtzee();
 
-        
-        System.out.println(p1.getScoresTab());
-        System.out.println(p2.getScoresTab());
+//
+//        System.out.println(p1.getScoreboard());
+//        System.out.println(p2);
 
+        Game g = new Game(2);
 
         /* This is to test if serialization works ... do not mind it */
 
