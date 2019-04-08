@@ -75,24 +75,32 @@ public class Scoreboard implements Serializable {
         setThisBasic(Scores.FOUR_OA_KIND, four_oa_kind);
     }
 
-    public void setFull_house() {
-        setThisBasic(Scores.FULL_HOUSE, 25);
+    public void setFull_house(boolean available) {
+        if (available) {
+            setThisBasic(Scores.FULL_HOUSE, 25);
+        } else setThisBasic(Scores.FULL_HOUSE, 0);
     }
 
-    public void setSmall_straight() {
-        setThisBasic(Scores.SMALL_STRAIGHT, 30);
+    public void setSmall_straight(boolean available) {
+        if(available) {
+            setThisBasic(Scores.SMALL_STRAIGHT, 30);
+        }else setThisBasic(Scores.SMALL_STRAIGHT, 0);
     }
 
-    public void setLarge_straight() {
-        setThisBasic(Scores.LARGE_STRAIGHT, 40);
+    public void setLarge_straight(boolean available) {
+        if(available) {
+            setThisBasic(Scores.LARGE_STRAIGHT, 40);
+        }else setThisBasic(Scores.LARGE_STRAIGHT, 0);
     }
 
     public void setChance(int chance) {
         setThisBasic(Scores.CHANCE, chance);
     }
 
-    public void setYahtzee() {
-        setThisBasic(Scores.YAHTZEE, 50);
+    public void setYahtzee(boolean available) {
+        if (available) {
+            setThisBasic(Scores.YAHTZEE, 50);
+        } else setThisBasic(Scores.YAHTZEE, 0);
     }
 
     public int getScore() {
@@ -101,10 +109,6 @@ public class Scoreboard implements Serializable {
 
     public HashMap<Scores, Integer> getScoresTab() {
         return this.scores;
-    }
-
-    public void setScoresTab(HashMap scores) {
-        this.scores = scores;
     }
 
     @Override

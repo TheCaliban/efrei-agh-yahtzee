@@ -16,5 +16,19 @@ public enum Scores {
     LARGE_STRAIGHT,
     CHANCE,
     YAHTZEE,
-    SCORE
+    SCORE;
+
+    public static String getValues() {
+        StringBuilder builder = new StringBuilder();
+        builder.append("{");
+        for (Scores s : values()) {
+            if (s != SCORE) {
+                builder.append(s + ", ");
+            }
+            else builder.append(s);
+        }
+        builder.append("}");
+        return builder.toString();
+    }
 }
+
