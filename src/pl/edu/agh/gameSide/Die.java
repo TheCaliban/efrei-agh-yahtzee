@@ -6,10 +6,12 @@ public class Die
 {
 
     private int value;
+    private static int idDie = 0;
 
     public Die()
     {
         this.value = 0;
+        this.idDie = idDie + 1;
     }
 
     public int rollTheDie()
@@ -25,4 +27,11 @@ public class Die
         return this.value;
     }
 
+
+    @Override
+    public String toString() {
+        return "Die{" +
+                "value=" + value +
+                '}';
+    }
 }

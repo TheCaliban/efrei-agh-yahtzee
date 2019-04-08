@@ -16,11 +16,6 @@ public class Main {
     public static void main(String[] args)
     {
 //        new Main();
-//        Die d = new Die();
-//        System.out.println(d.rollTheDie());
-//        System.out.println(d.rollTheDie());
-//        System.out.println(d.rollTheDie());
-//        System.out.println(d.rollTheDie());
 
         Player p1 = new Player("Jean");
         Player p2 = new Player("John");
@@ -30,27 +25,25 @@ public class Main {
 
         p2.getScoreboard().setYahtzee();
 
-//
-//        System.out.println(p1.getScoreboard());
-//        System.out.println(p2);
 
-        Game g = new Game(2);
+        System.out.println(p1.getScoreboard());
 
+<<<<<<< HEAD
         System.out.println(g);
 
         /* This is to test if serialization works ... do not mind it */
+=======
+        Game g = new Game(2);
+        System.out.println(g.getDice());
+>>>>>>> 3523dd84130a36a4d64fe594c3d8ed4f5e90f3fe
 
         try {
             p1.storeHistory();
-
             p1.setScoresTab(null);
-
-            System.out.println(p1.getScoresTab());
-
             System.out.println(p1.readHistory());
 
         } catch (IOException | ClassNotFoundException e) {
-//            e.printStackTrace();
+            e.printStackTrace();
             System.out.println("Try serialization error");
         }
     }

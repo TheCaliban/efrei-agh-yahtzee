@@ -12,9 +12,11 @@ public class Game {
     private ArrayList<Die> dice;
     private int turn;
 
-    public Game(int numPlayers) {
+    public Game(int numPlayers)
+    {
         this.dice = new ArrayList<>(5);
-        for (int i = 0; i < 5; i++) {
+        for (int i = 0; i < 5; i++)
+        {
             this.dice.add(new Die());
         }
         this.turn = 0;
@@ -23,7 +25,8 @@ public class Game {
         System.out.println("Please enter the name of the players");
         Scanner sc = new Scanner(System.in);
 
-        for (int i = 0; i < numPlayers; i++) {
+        for (int i = 0; i < numPlayers; i++)
+        {
             System.out.println("Player number " + (i + 1));
             String name = sc.nextLine();
             this.players.add(new Player(name));
