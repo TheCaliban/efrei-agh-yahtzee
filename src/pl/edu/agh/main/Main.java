@@ -110,13 +110,10 @@ public class Main {
         }
 
         Game game = new Game(n);
-//
-//        for (int i = 0; i < 13; i++) {
-//            game.nextTurn();
-//        }
 
-        game.nextTurn();
-
+        for (int i = 0; i < 13; i++) {
+            game.nextTurn();
+        }
     }
 
     private void checkHistory()
