@@ -2,6 +2,7 @@ package pl.edu.agh.playerSide;
 
 import java.io.Serializable;
 import java.util.HashMap;
+import java.util.Objects;
 
 public class Scoreboard implements Serializable {
 
@@ -104,6 +105,19 @@ public class Scoreboard implements Serializable {
 
     public void setScoresTab(HashMap scores) {
         this.scores = scores;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Scoreboard that = (Scoreboard) o;
+        return Objects.equals(scores, that.scores);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(scores);
     }
 
     @Override
