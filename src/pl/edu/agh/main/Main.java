@@ -4,6 +4,7 @@ import pl.edu.agh.gameSide.Game;
 import pl.edu.agh.playerSide.Player;
 
 import java.io.IOException;
+import java.sql.SQLOutput;
 import java.util.Scanner;
 
 public class Main {
@@ -28,14 +29,11 @@ public class Main {
 
         System.out.println(p1.getScoreboard());
 
-<<<<<<< HEAD
-        System.out.println(g);
-
         /* This is to test if serialization works ... do not mind it */
-=======
         Game g = new Game(2);
         System.out.println(g.getDice());
->>>>>>> 3523dd84130a36a4d64fe594c3d8ed4f5e90f3fe
+
+        System.out.println(g);
 
         try {
             p1.storeHistory();
