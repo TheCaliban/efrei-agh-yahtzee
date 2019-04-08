@@ -66,7 +66,7 @@ public class Game {
                     }
                 }
 
-                System.out.println("Round number " + round+1);
+                System.out.println("Round number " + (round+1));
 
                 String choice = "y";
 
@@ -161,56 +161,68 @@ public class Game {
 
             while (!scored) {
                 String score = sc.nextLine().toUpperCase();
+                Scores finalScore = Scores.ONES; //Definition of finalScore to prevent error warning
 
                 while (!avaiValues.contains(score)) {
                     System.out.println("Please enter a correct score type: ");
                     score = sc.nextLine().toUpperCase();
                 }
 
-                while ((int) p.getScoresTab().get(score) != -1) { //null pointer exception, besoin de transformer score en l'equivalent dans l'enum Scores
-                    System.out.println("Please enter an unscored score type:");
-                    score = sc.nextLine().toUpperCase();
+                for (Scores aScore:Scores.values()){
+                    if(score.equalsIgnoreCase(aScore.name())){
+                        finalScore = aScore;
+                    }
+                }
+
+                while (!p.getScoresTab().get(finalScore).equals(-1)){
+                    System.out.println("Please enter an unscored score type: ");
+                    score = sc.nextLine();
+                    for (Scores aScore:Scores.values()){
+                        if(score.equalsIgnoreCase(aScore.name())){
+                            finalScore = aScore;
+                        }
+                    }
                 }
 
                 int count = 0, ref, ref1, ref2, i = 0;
-                switch (score) {
-                    case "ONES":
+                switch (finalScore) {
+                    case ONES:
                         for (Die d : this.dice) {
                             if (d.getValue() == 1) i++;
                         }
                         p.getScoreboard().setOnes(i * 1);
                         break;
-                    case "TWOS":
+                    case TWOS:
                         for (Die d : this.dice) {
                             if (d.getValue() == 2) i++;
                         }
                         p.getScoreboard().setTwos(i * 2);
                         break;
-                    case "THREES":
+                    case THREES:
                         for (Die d : this.dice) {
                             if (d.getValue() == 3) i++;
                         }
                         p.getScoreboard().setThrees(i * 3);
                         break;
-                    case "FOURS":
+                    case FOURS:
                         for (Die d : this.dice) {
                             if (d.getValue() == 4) i++;
                         }
                         p.getScoreboard().setFours(i * 4);
                         break;
-                    case "FIVES":
+                    case FIVES:
                         for (Die d : this.dice) {
                             if (d.getValue() == 5) i++;
                         }
                         p.getScoreboard().setFives(i * 5);
                         break;
-                    case "SIXES":
+                    case SIXES:
                         for (Die d : this.dice) {
                             if (d.getValue() == 6) i++;
                         }
                         p.getScoreboard().setSixes(i * 6);
                         break;
-                    case "THREE_OA_KIND":
+                    case THREE_OA_KIND:
                         for (Die d : this.dice) {
                             count += d.getValue();
                         }
@@ -245,7 +257,7 @@ public class Game {
                             }
                         }
                         break;
-                    case "FOUR_OA_KIND":
+                    case FOUR_OA_KIND:
                         for (Die d : this.dice) {
                             count += d.getValue();
                         }
@@ -269,7 +281,7 @@ public class Game {
                             else p.getScoreboard().setFour_oa_kind(0);
                         }
                         break;
-                    case "FULL_HOUSE":
+                    case FULL_HOUSE:
                         ref = this.dice.get(0).getValue();
                         int j = 1;
                         while (this.dice.get(j).getValue() == ref) j++;
@@ -292,17 +304,17 @@ public class Game {
                             else p.getScoreboard().setFull_house(false);
                         }
                         break;
-                    case "SMALL_STRAIGHT":
+                    case SMALL_STRAIGHT:
                         break;
-                    case "LARGE_STRAIGHT":
+                    case LARGE_STRAIGHT:
                         break;
-                    case "CHANCE":
+                    case CHANCE:
                         for (Die d : this.dice) {
                             count += d.getValue();
                         }
                         p.getScoreboard().setChance(i);
                         break;
-                    case "YAHTZEE":
+                    case YAHTZEE:
                         ref = this.dice.get(0).getValue();
                         for (Die d : this.dice) {
                             if (d.getValue() == ref) i++;
@@ -313,7 +325,10 @@ public class Game {
                         break;
                 }
 
+                scored = true;
 
+                System.out.println("Scoreboard scored: ");
+                System.out.println(p);
             }
         }
 
