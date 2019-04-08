@@ -309,8 +309,31 @@ public class Game {
                         }
                         break;
                     case SMALL_STRAIGHT:
+                        int v1 = 0, v2 = 0, v3 = 0, v4 = 0, v5 = 0, v6 = 0;
+                        for (Die d : this.dice) {
+                            if (d.getValue() == 1) v1++;
+                            if (d.getValue() == 2) v2++;
+                            if (d.getValue() == 3) v3++;
+                            if (d.getValue() == 4) v4++;
+                            if (d.getValue() == 5) v5++;
+                            if (d.getValue() == 6) v6++;
+                        }
+                        if (v1 >= 1 && v2 >= 1 && v3 >= 1 && v4 >= 1)
+                            p.getScoreboard().setSmall_straight(true);
+                        else if (v2 >= 1 && v3 >= 1 && v4 >= 1 && v5 >= 1)
+                            p.getScoreboard().setSmall_straight(true);
+                        else if (v3 >= 1 && v4 >= 1 && v5 >= 1 && v6 >= 1)
+                            p.getScoreboard().setSmall_straight(true);
+                        else
+                            p.getScoreboard().setSmall_straight(false);
                         break;
                     case LARGE_STRAIGHT:
+                        if (dice.get(0).getValue() == 1 && dice.get(1).getValue() == 2 && dice.get(2).getValue() == 3 && dice.get(3).getValue() == 4 && dice.get(4).getValue() == 5)
+                            p.getScoreboard().setLarge_straight(true);
+                        else if (dice.get(0).getValue() == 2 && dice.get(1).getValue() == 3 && dice.get(2).getValue() == 4 && dice.get(3).getValue() == 5 && dice.get(4).getValue() == 6)
+                            p.getScoreboard().setLarge_straight(true);
+                        else
+                            p.getScoreboard().setLarge_straight(false);
                         break;
                     case CHANCE:
                         for (Die d : this.dice) {
@@ -342,8 +365,7 @@ public class Game {
     public ArrayList<Die> sortDice() {
         for (int i = 0; i < dice.size() - 1; i++) {
             for (int j = i + 1; j < dice.size(); j++) {
-                if (dice.get(i).getValue() > dice.get(j).getValue())
-                {
+                if (dice.get(i).getValue() > dice.get(j).getValue()) {
                     Collections.swap(dice, i, j);
                 }
             }
