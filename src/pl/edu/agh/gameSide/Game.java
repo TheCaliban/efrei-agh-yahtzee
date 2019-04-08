@@ -4,6 +4,8 @@ import pl.edu.agh.playerSide.Player;
 import pl.edu.agh.playerSide.Scores;
 
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
 import java.util.Scanner;
 
 public class Game {
@@ -66,7 +68,7 @@ public class Game {
                     }
                 }
 
-                System.out.println("Round number " + (round+1));
+                System.out.println("Round number " + (round + 1));
 
                 String choice = "y";
 
@@ -114,7 +116,7 @@ public class Game {
                                     System.out.println("Please enter the number of the die you want to keep");
                                     int kee = sc.nextInt();
 
-                                    if (kee > 5 && kee < 1) {
+                                    if (kee > 5 || kee < 1) {
                                         System.out.println("Please enter a number between 1 and 5 included");
                                         kee = sc.nextInt();
                                     }
@@ -152,6 +154,8 @@ public class Game {
                 System.out.println("All the dice are:\n" + this.dice);
             }
 
+            dice = sortDice();
+
             boolean scored = false;
             System.out.println("Where do you want to score ?");
 
@@ -168,17 +172,17 @@ public class Game {
                     score = sc.nextLine().toUpperCase();
                 }
 
-                for (Scores aScore:Scores.values()){
-                    if(score.equalsIgnoreCase(aScore.name())){
+                for (Scores aScore : Scores.values()) {
+                    if (score.equalsIgnoreCase(aScore.name())) {
                         finalScore = aScore;
                     }
                 }
 
-                while (!p.getScoresTab().get(finalScore).equals(-1)){
+                while (!p.getScoresTab().get(finalScore).equals(-1)) {
                     System.out.println("Please enter an unscored score type: ");
                     score = sc.nextLine();
-                    for (Scores aScore:Scores.values()){
-                        if(score.equalsIgnoreCase(aScore.name())){
+                    for (Scores aScore : Scores.values()) {
+                        if (score.equalsIgnoreCase(aScore.name())) {
                             finalScore = aScore;
                         }
                     }
@@ -333,6 +337,18 @@ public class Game {
         }
 
         turn += 1;
+    }
+
+    public ArrayList<Die> sortDice() {
+        for (int i = 0; i < dice.size() - 1; i++) {
+            for (int j = i + 1; j < dice.size(); j++) {
+                if (dice.get(i).getValue() > dice.get(j).getValue())
+                {
+                    Collections.swap(dice, i, j);
+                }
+            }
+        }
+        return dice;
     }
 
     public Player getWinner() {

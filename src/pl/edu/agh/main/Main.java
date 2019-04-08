@@ -33,7 +33,7 @@ public class Main {
 //        System.out.println(p1.getScoreboard());
 //
 //        ArrayList<Player> players = new ArrayList<>();
-//        players.add(new Player("John"));
+//        players.add(new Player("John"));2
 //        players.add(new Player("Jean"));
 //
 //        Game g = new Game(players);
