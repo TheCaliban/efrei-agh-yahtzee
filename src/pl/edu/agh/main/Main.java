@@ -36,6 +36,8 @@ public class Main {
 
         Game g = new Game(2);
 
+        System.out.println(g);
+
         /* This is to test if serialization works ... do not mind it */
 
         try {
