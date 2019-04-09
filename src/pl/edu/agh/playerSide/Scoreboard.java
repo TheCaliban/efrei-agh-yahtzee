@@ -82,15 +82,15 @@ public class Scoreboard implements Serializable {
     }
 
     public void setSmall_straight(boolean available) {
-        if(available) {
+        if (available) {
             setThisBasic(Scores.SMALL_STRAIGHT, 30);
-        }else setThisBasic(Scores.SMALL_STRAIGHT, 0);
+        } else setThisBasic(Scores.SMALL_STRAIGHT, 0);
     }
 
     public void setLarge_straight(boolean available) {
-        if(available) {
+        if (available) {
             setThisBasic(Scores.LARGE_STRAIGHT, 40);
-        }else setThisBasic(Scores.LARGE_STRAIGHT, 0);
+        } else setThisBasic(Scores.LARGE_STRAIGHT, 0);
     }
 
     public void setChance(int chance) {

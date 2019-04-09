@@ -12,13 +12,11 @@ import java.util.Scanner;
 
 public class Main {
 
-    private Main()
-    {
+    private Main() {
         menu();
     }
 
-    public static void main(String[] args)
-    {
+    public static void main(String[] args) {
         new Main();
 
 //        Player p1 = new Player("Jean");
@@ -58,23 +56,20 @@ public class Main {
 //        }
     }
 
-    private void menu()
-    {
+    private void menu() {
         System.out.println("Welcome on our Yahtzee Game");
 
         Scanner sc = new Scanner(System.in);
         int choice = 0;
 
-        while(choice != 3)
-        {
+        while (choice != 3) {
 
             System.out.println("Pick an option below:");
             System.out.println("1 - Play the game\n2 - Check my history\n3 - Exit");
 
             choice = sc.nextInt();
 
-            switch (choice)
-            {
+            switch (choice) {
                 case 1:
                     System.out.println("Start the game\n");
                     startTheGame();
@@ -94,30 +89,37 @@ public class Main {
 
     }
 
-    private void startTheGame()
-    {
+    private void startTheGame() {
         Scanner sc = new Scanner(System.in);
         System.out.println("Please enter the number of players in the game, up to 10: ");
+        while (!sc.hasNextInt()) {
+            System.out.println("Please enter a number");
+        }
         int n = sc.nextInt();
 
-        while (n > 10){
+        while (n > 10) {
             System.out.println("Number up to 10 please: ");
+            while (!sc.hasNextInt()) {
+                System.out.println("Please enter a number");
+            }
             n = sc.nextInt();
         }
-        while (n < 2){
+        while (n < 2) {
             System.out.println("Give at least 2 players");
+            while (!sc.hasNextInt()) {
+                System.out.println("Please enter a number");
+            }
             n = sc.nextInt();
         }
+
 
         Game game = new Game(n);
-
         for (int i = 0; i < 13; i++) {
             game.nextTurn();
         }
     }
 
-    private void checkHistory()
-    {
+    private void checkHistory() {
 
     }
 }

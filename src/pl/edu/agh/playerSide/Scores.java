@@ -24,8 +24,7 @@ public enum Scores {
         for (Scores s : values()) {
             if (s != SCORE) {
                 builder.append(s + ", ");
-            }
-            else builder.append(s);
+            } else builder.append(s);
         }
         builder.append("}");
         return builder.toString();
