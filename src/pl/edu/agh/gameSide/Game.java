@@ -1,12 +1,10 @@
 package pl.edu.agh.gameSide;
 
 import pl.edu.agh.playerSide.Player;
+import pl.edu.agh.playerSide.Scoreboard;
 import pl.edu.agh.playerSide.Scores;
 
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Collections;
-import java.util.Scanner;
+import java.util.*;
 
 public class Game {
 
@@ -46,7 +44,8 @@ public class Game {
     }
 
     public void nextTurn() {
-        System.out.println("Beginning of the turn " + this.turn);
+        System.out.println("Beginning of the turn " + this.turn + "\n");
+
         System.out.println(this.toString()); //Display the entire table of the game
         Scanner sc = new Scanner(System.in);
 
@@ -388,20 +387,38 @@ public class Game {
     @Override
     public String toString() {
         StringBuilder builder = new StringBuilder();
-        String[][] game = new String[Scores.values().length + 1][this.players.size()];
+        String[][] game = new String[Scores.values().length + 3][this.players.size()];
         int t = 0;
 
         for (Player p : this.players) {
-            String[] b = p.toString().split("\n");
-            for (int j = 0; j < Scores.values().length; j++) {
-                game[j][t] = b[j];
+
+            String playerName = p.getName();
+            TreeMap playerSc = p.getScoresTab();
+
+            int j = 1;
+
+            game[j - 1][t] = playerName;
+            for (Object score : playerSc.keySet()) {
+                game[j][t] = score + " = " + playerSc.get(score);
+                j++;
+
             }
+//            b[0] = playerName;
+
+//            b[] = p.toString().split("\n");
+/*            for (int j = 0; j < Scores.values().length; j++) {
+                game[j][t] = b[j];
+            }*/
             t += 1;
         }
 
-        for (int i = 0; i < Scores.values().length; i++) {
+        for (int i = 0; i < Scores.values().length + 1; i++) {
             for (int j = 0; j < this.players.size(); j++) {
-                builder.append(game[i][j] + "\t\t");
+
+                builder.append(game[i][j]);
+                for (int counter = 30 - game[i][j].length(); counter > 0; counter--) {
+                    builder.append(" ");
+                }
             }
             builder.append("\n");
         }

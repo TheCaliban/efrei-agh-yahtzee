@@ -3,13 +3,14 @@ package pl.edu.agh.playerSide;
 import java.io.Serializable;
 import java.util.HashMap;
 import java.util.Objects;
+import java.util.TreeMap;
 
 public class Scoreboard implements Serializable {
 
-    private HashMap<Scores, Integer> scores;
+    private TreeMap<Scores, Integer> scores;
 
     public Scoreboard() {
-        this.scores = new HashMap<>();
+        this.scores = new TreeMap<>();
         this.scores.put(Scores.ONES, -1);
         this.scores.put(Scores.TWOS, -1);
         this.scores.put(Scores.THREES, -1);
@@ -107,7 +108,7 @@ public class Scoreboard implements Serializable {
         return scores.get(Scores.SCORE);
     }
 
-    public HashMap<Scores, Integer> getScoresTab() {
+    public TreeMap<Scores, Integer> getScoresTab() {
         return this.scores;
     }
 
@@ -127,16 +128,16 @@ public class Scoreboard implements Serializable {
     @Override
     public String toString() {
         StringBuilder builder = new StringBuilder();
-        builder.append("Scoreboard{");
+        builder.append("Scoreboard\n");
+//        builder.append("-------------------------");
         for (Scores type : Scores.values()) {
-            builder.append("\n" + type.toString() + "=");
+            builder.append("\n" + type.toString() + " = ");
             if (this.scores.get(type) == -1) {
                 builder.append("Unscored");
             } else {
                 builder.append(this.scores.get(type));
             }
         }
-        builder.append("}");
         return builder.toString();
     }
 

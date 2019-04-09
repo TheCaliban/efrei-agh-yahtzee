@@ -1,11 +1,9 @@
 package pl.edu.agh.playerSide;
 
-import pl.edu.agh.playerSide.Scoreboard;
 
 import java.io.*;
-import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.Objects;
+import java.util.TreeMap;
 
 public class Player {
     private String name;
@@ -40,7 +38,7 @@ public class Player {
         return name;
     }
 
-    public HashMap getScoresTab() {
+    public TreeMap getScoresTab() {
         return this.sc.getScoresTab();
     }
 

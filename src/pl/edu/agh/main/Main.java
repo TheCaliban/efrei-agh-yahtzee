@@ -18,42 +18,6 @@ public class Main {
 
     public static void main(String[] args) {
         new Main();
-
-//        Player p1 = new Player("Jean");
-//        Player p2 = new Player("John");
-//
-//        p1.getScoreboard().setOnes(6);
-//        p1.getScoreboard().setFives(10);
-//
-//        p2.getScoreboard().setYahtzee();
-//
-//
-//        System.out.println(p1.getScoreboard());
-//
-//        ArrayList<Player> players = new ArrayList<>();
-//        players.add(new Player("John"));2
-//        players.add(new Player("Jean"));
-//
-//        Game g = new Game(players);
-//
-//        for (Die d:g.getDice()) {
-//            d.rollTheDie();
-//            System.out.println(d.getIdDie());
-//        }
-//
-//        System.out.println(g.getDice());
-//
-//        System.out.println(g);
-//
-//        try {
-//            p1.storeHistory();
-//            p1.setScoresTab(null);
-//            System.out.println(p1.readHistory());
-//
-//        } catch (IOException | ClassNotFoundException e) {
-//            e.printStackTrace();
-//            System.out.println("Try serialization error");
-//        }
     }
 
     private void menu() {
