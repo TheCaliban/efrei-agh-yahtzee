@@ -67,13 +67,13 @@ public class Game {
                     }
                 }
 
-                System.out.println("Round number " + (round + 1));
+                System.out.println("\nRound number " + (round + 1));
 
                 String choice = "y";
 
                 if (round != 2) {
 
-                    System.out.println("Dice in the game are:");
+                    System.out.println("\nDice in the game are:");
                     for (int i = 0; i < 5; i++) {
                         if (play[i]) {
                             System.out.println(this.dice.get(i));
@@ -89,7 +89,7 @@ public class Game {
 
                     while (!choice.equals("n")) { //Beginning of the intern decisions into a round
 
-                        System.out.println("Do you want to keep or repose a die ?");
+                        System.out.println("\nDo you want to keep or repose a die ?");
                         System.out.println("Yes [y] or No [n]");
                         String result = sc.nextLine();
 
@@ -120,8 +120,14 @@ public class Game {
                                         kee = sc.nextInt();
                                     }
 
-                                    hand[kee - 1] = true;
-                                    play[kee - 1] = false;
+                                    for (Die d: dice){
+                                        if(d.getIdDie() == kee){
+                                            int i = dice.indexOf(d);
+                                            hand[i] = true;
+                                            play[i] = false;
+                                        }
+                                    }
+
                                     break;
                                 case "r": //Case if you want to repose a die
                                     System.out.println("Please enter the number of the die you want to repose");
@@ -132,8 +138,13 @@ public class Game {
                                         rep = sc.nextInt();
                                     }
 
-                                    hand[rep - 1] = false;
-                                    play[rep - 1] = true;
+                                    for (Die d: dice){
+                                        if(d.getIdDie() == rep){
+                                            int i = dice.indexOf(d);
+                                            hand[i] = false;
+                                            play[i] = true;
+                                        }
+                                    }
                                     break;
                             }
                         }
