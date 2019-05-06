@@ -73,23 +73,23 @@ public class Game {
 
                 if (round != 2) {
 
-                    System.out.println("\nDice in the game are:");
-                    for (int i = 0; i < 5; i++) {
-                        if (play[i]) {
-                            System.out.println(this.dice.get(i));
-                        }
-                    }
-
-                    System.out.println("\nDice in your hand are:");
-                    for (int i = 0; i < 5; i++) {
-                        if (hand[i]) {
-                            System.out.println(this.dice.get(i));
-                        }
-                    }
-
                     while (!choice.equals("n")) { //Beginning of the intern decisions into a round
 
-                        System.out.println("\nDo you want to keep or repose a die ?");
+                        System.out.println("\nDice in the game are:");
+                        for (int i = 0; i < 5; i++) {
+                            if (play[i]) {
+                                System.out.println(this.dice.get(i));
+                            }
+                        }
+
+                        System.out.println("\nDice in your hand are:");
+                        for (int i = 0; i < 5; i++) {
+                            if (hand[i]) {
+                                System.out.println(this.dice.get(i));
+                            }
+                        }
+
+                        System.out.println("\nDo you want to change a die ?");
                         System.out.println("Yes [y] or No [n]");
                         String result = sc.nextLine();
 
@@ -102,7 +102,7 @@ public class Game {
 
                         if (choice.equals("y")) {
 
-                            System.out.println("Do you want to keep [k] or repose [r] a die ?");
+                            System.out.println("Do you want to keep a die in your hand [k] ? Or repose a die [r] ?");
                             result = sc.nextLine();
 
                             while (!result.equals("k") && !result.equals("r")) {//Choice of keep or repose die
@@ -120,8 +120,8 @@ public class Game {
                                         kee = sc.nextInt();
                                     }
 
-                                    for (Die d: dice){
-                                        if(d.getIdDie() == kee){
+                                    for (Die d : dice) {
+                                        if (d.getIdDie() == kee) {
                                             int i = dice.indexOf(d);
                                             hand[i] = true;
                                             play[i] = false;
@@ -138,8 +138,8 @@ public class Game {
                                         rep = sc.nextInt();
                                     }
 
-                                    for (Die d: dice){
-                                        if(d.getIdDie() == rep){
+                                    for (Die d : dice) {
+                                        if (d.getIdDie() == rep) {
                                             int i = dice.indexOf(d);
                                             hand[i] = false;
                                             play[i] = true;
@@ -149,8 +149,9 @@ public class Game {
                             }
                         }
                     }
+
                     System.out.println("All dice are:\n" + this.dice);
-                    System.out.println("Do you want to stop here ?");
+                    System.out.println("Do you want to score now ?");
                     System.out.println("Yes [y] or No [n]");
                     String result = sc.nextLine();
 
@@ -414,12 +415,6 @@ public class Game {
                 j++;
 
             }
-//            b[0] = playerName;
-
-//            b[] = p.toString().split("\n");
-/*            for (int j = 0; j < Scores.values().length; j++) {
-                game[j][t] = b[j];
-            }*/
             t += 1;
         }
 
@@ -433,7 +428,6 @@ public class Game {
             }
             builder.append("\n");
         }
-
         return builder.toString();
     }
 }

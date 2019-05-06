@@ -9,6 +9,7 @@ import java.io.IOException;
 import java.sql.SQLOutput;
 import java.util.ArrayList;
 import java.util.Scanner;
+import java.util.concurrent.ExecutionException;
 
 public class Main {
 
@@ -31,7 +32,13 @@ public class Main {
             System.out.println("Pick an option below:");
             System.out.println("1 - Play the game\n2 - Check my history\n3 - Exit");
 
-            choice = sc.nextInt();
+            try {
+                choice = sc.nextInt();
+            } catch (Exception e) {
+                choice = 0;
+                sc.next();
+            }
+
 
             switch (choice) {
                 case 1:
@@ -56,26 +63,32 @@ public class Main {
     private void startTheGame() {
         Scanner sc = new Scanner(System.in);
         System.out.println("Please enter the number of players in the game, up to 10: ");
-        while (!sc.hasNextInt()) {
-            System.out.println("Please enter a number");
-        }
-        int n = sc.nextInt();
 
-        while (n > 10) {
-            System.out.println("Number up to 10 please: ");
-            while (!sc.hasNextInt()) {
-                System.out.println("Please enter a number");
+        int n = 0;
+        boolean validInput = false;
+        while (!validInput) {
+            try {
+                n = sc.nextInt();
+                validInput = true;
+            } catch (Exception e) {
+                System.out.println("Please enter a number.");
+                sc.next();
             }
-            n = sc.nextInt();
-        }
-        while (n < 2) {
-            System.out.println("Give at least 2 players");
-            while (!sc.hasNextInt()) {
-                System.out.println("Please enter a number");
-            }
-            n = sc.nextInt();
         }
 
+        while ((n < 2) || (n > 10)) {
+            System.out.println("Number between 2 and 10 please: ");
+            validInput = false;
+            while (!validInput) {
+                try {
+                    n = sc.nextInt();
+                    validInput = true;
+                } catch (Exception e) {
+                    System.out.println("Please enter a number.");
+                    sc.next();
+                }
+            }
+        }
 
         Game game = new Game(n);
         for (int i = 0; i < 13; i++) {

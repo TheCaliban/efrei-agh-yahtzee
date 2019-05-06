@@ -30,4 +30,3 @@ public enum Scores {
         return builder.toString();
     }
 }
-
